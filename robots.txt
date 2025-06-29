@@ -1,42 +1,283 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
+# robots.txt v3.5 - 2025-05-28
+# Optimoitu osoitteelle https://clairvoyancemedium.github.io/laihdutuskapselit-nopea-ja-tehokas-ratkaisu-painonpudotukseen.github.io/
+# Tavoitteet: Maailmanlaajuinen SEO, erittäin tiheä indeksointi, tuki tekoälylle/ääniohjauksille/sosiaaliseen mediaan, monikielisyys, maksimaalinen suojaus
+
+# --- Yleiset ohjeet kaikille laillisille indeksoijille ---
 User-agent: *
-Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
+Allow: /
+Allow: /[a-z]{2}/  # Monikieliset sivut (/fi/, /en/, /es/, jne.)
+Allow: /kayttoehdot/  # Julkiset käyttöehdot
+Allow: /fonts/        # Fontit renderöintiä varten
+Allow: /kuvat/        # Kuvat indeksointia varten
+Allow: /js/           # Interaktiiviset skriptit
+Allow: /css/          # Mobiiliystävälliset CSS-tiedostot
+Allow: /*.webp$       # WebP-kuvat
+Allow: /*.jpg$        # JPG-kuvat
+Allow: /*.png$        # PNG-kuvat
+Allow: /*.gif$        # GIF-kuvat
+Allow: /*.js$         # JavaScript-tiedostot
+Allow: /*.css$        # CSS-tiedostot
+Disallow: /csp-raporttipiste/  # Suojattu CSP
+Disallow: /yhteystiedot/       # Yhteystietosivu
+Disallow: /tietosuojaseloste/  # Tietosuojakäytäntö
+Disallow: /kassa/              # Maksutapahtumasivut
+Disallow: /haku/               # Hakusivut
+Disallow: /api/                # API-päätepisteet
+Disallow: /testi/              # Testikansiot
+Disallow: /staging/            # Testiympäristöt
+Clean-param: utm_source&utm_medium&utm_campaign&kieli&istunto_id  # Sallitut hyödylliset parametrit
 
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
-
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+# --- Ohjeet Googlebotille (Google, Google Assistant) ---
 User-agent: Googlebot
+Crawl-delay: 1
+Allow: /blogi/     # Runsas sisältö SEO:lle
+Allow: /artikkeli/ # Artikkelit hakutulospätkiin
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet Googlebot-Imagelle ---
+User-agent: Googlebot-Image
+Allow: /kuvat/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Disallow: /favicon_optimoitu.webp  # Estä favicon
+
+# --- Ohjeet Googlebot-Videolle ---
+User-agent: Googlebot-Video
+Crawl-delay: 1
 Allow: /
-User-agent: AdsBot-Google
-Allow: /
+Allow: /[a-z]{2}/
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet Bingbotille (Bing, Cortana) ---
 User-agent: Bingbot
+Crawl-delay: 2
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet Yandexille (Yandex, Alice) ---
+User-agent: Yandex
+Crawl-delay: 3
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: utm_source&utm_medium&utm_campaign&kieli&istunto_id
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet Baiduspiderille (Kiina) ---
+User-agent: Baiduspider
+Crawl-delay: 3
+Allow: /zh/        # Priorisoi kiina
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+Disallow: /api/
+Disallow: /testi/
+Disallow: /staging/
+
+# --- Ohjeet Sogoulle (Kiina) ---
+User-agent: Sogou
+Crawl-delay: 4
+Allow: /zh/
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+Disallow: /api/
+Disallow: /testi/
+Disallow: /staging/
+
+# --- Ohjeet Applebotille (Siri, Apple) ---
+User-agent: Applebot
+Crawl-delay: 2
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet Amazonbotille (Alexa, Amazon) ---
+User-agent: Amazonbot
+Crawl-delay: 3
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet Naverbotille (Japani/Korea) ---
+User-agent: Naverbot
+Crawl-delay: 3
+Allow: /ja/        # Priorisoi japani
+Allow: /ko/        # Priorisoi korea
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet SeznamBotille (Tšekki) ---
+User-agent: SeznamBot
+Crawl-delay: 3
+Allow: /cs/        # Priorisoi tšekki
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet Qwantifylle (Qwant, Eurooppa) ---
+User-agent: Qwantify
+Crawl-delay: 4
+Allow: /fi/        # Priorisoi suomi
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet DuckDuckGoBotille (Globaali) ---
+User-agent: DuckDuckGoBot
+Crawl-delay: 2
 Allow: /
+Allow: /[a-z]{2}/
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
+# --- Ohjeet JioSpherelle (Intia) ---
+User-agent: JioSphere
+Crawl-delay: 3
+Allow: /hi/        # Priorisoi hindi
+Allow: /blogi/
+Allow: /artikkeli/
+Clean-param: kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Ohjeet keskustelullisille tekoälyindeksoijille ---
+User-agent: Grok
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: openai-crawler
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: cohere-ai
+User-agent: PerplexityBot
+User-agent: CCBot
+User-agent: youbot
+User-agent: phindbot
+User-agent: GeminiBot  # Google AI
+Crawl-delay: 4
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blogi/     # Keskusteluotteet
+Allow: /artikkeli/
+Allow: /kuvat/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+Disallow: /api/
+Disallow: /testi/
+Disallow: /staging/
+
+# --- Ohjeet sosiaalisen median indeksoijille ---
+User-agent: FacebookBot
+User-agent: Twitterbot
+User-agent: redditbot
+User-agent: TikTokBot  # Uudet sosiaaliset mediat
+Crawl-delay: 2
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blogi/     # Sosiaaliset esikatselut
+Allow: /artikkeli/
+Allow: /kuvat/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Estä ei-toivotut indeksoijat ---
+User-agent: MJ12bot
+User-agent: AhrefsBot
+User-agent: PetalBot
+User-agent: DotBot
 Disallow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+# --- Salli SemrushBot SEO-auditointeja varten ---
+User-agent: SemrushBot
+Crawl-delay: 5
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blogi/
+Allow: /artikkeli/
+Allow: /kuvat/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&kieli
+Disallow: /csp-raporttipiste/
+Disallow: /yhteystiedot/
+Disallow: /tietosuojaseloste/
+Disallow: /kassa/
+
+# --- Suojaus tuntemattomia indeksoijia vastaan ---
+User-agent: *
+Disallow: /  # Estä oletuksena, ellei nimenomaisesti sallittu
+
+# --- Indeksoinnin optimointi ---
+Crawl-delay: 1
+Request-rate: 1/4  # 1 pyyntö/4s nopeaan indeksointiin
+
+# --- Sivustokarttaindeksi ---
+Sitemap: https://clairvoyancemedium.github.io/laihdutuskapselit-nopea-ja-tehokas-ratkaisu-painonpudotukseen.github.io/sitemap-index.xml
